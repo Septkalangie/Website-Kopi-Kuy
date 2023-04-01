@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="vendor/bootwatch/solar.css">
     <link rel="stylesheet" href="vendor/bootsrap-icon/bootstrap-icons.css">
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <style>
+      section.produk {
+        min-height: 100vh;
+      }
+    </style>
 
 </head>
 
@@ -50,95 +55,31 @@
 
       <section class="produk mt-5 pt-5 text-center">
                 <div class="container">
-                    <h1>Pilih Produk Anda</h1>
+                    <h1 id="judul">Pilih Produk Anda</h1>
                     <p class="fs-4">Kualitas terbaik biji kopi pilihan, Fresh langsung diambil dari petani</p>
                     <hr class="border border-success border-3 opacity-75">
         
                     <div class="form-floating col-md-4 mx-auto my-3">
-                        <select class="form-select" id="select_kopi" aria-label="Floating label select example">
+                       
+                        <select class="form-select" id="select_kopi" aria-label="Floating label select example">
                             <option selected disabled>-</option>
                             <option value="arabica">Arabica</option>
                             <option value="robusta">Robusta</option>
+                            <option value="blemd">blendiosco</option>
                         </select>
-                        <label for="select_kopi">Pilih jenis Kopi</label>
+                       
+                       <label for="select_kopi">Pilih jenis Kopi</label>
                     </div>
         
                            
-                  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
-                    <div clas="col-md-3 mb-4">
-                      <div class="card">
-                        <img src="images/produk/product_latte.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Teh Kopi</h5>
-                          <div class="row my-4">
-                            <div class="col">
-                              Rp 150.000
-                            </div>
-                            <div class="col">
-                              100 Gram
-                            </div>
-                          </div>
-                          <a href="#" class="btn btn-primary w-100"><i class="bi bi-cart4"></i>Beli</a>
-                        </div>
-                      </div>
-                    </div>
-                    <div clas="col-md-3 mb-4">
-                      <div class="card">
-                        <img src="images/produk/product_kopi_susu.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">free Kopi</h5>
-                          <div class="row my-4">
-                            <div class="col">
-                              Rp 150.000
-                            </div>
-                            <div class="col">
-                              100 Gram
-                            </div>
-                          </div>
-                          <a href="#" class="btn btn-primary w-100"><i class="bi bi-cart4"></i>Beli</a>
-                        </div>
-                      </div>
-                    </div>
-                    <div clas="col-md-3 mb-4">
-                      <div class="card">
-                        <img src="images/produk/product_capuchino.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Susu Kopi</h5>
-                          <div class="row my-4">
-                            <div class="col">
-                              Rp 150.000
-                            </div>
-                            <div class="col">
-                              100 Gram
-                            </div>
-                          </div>
-                          <a href="#" class="btn btn-primary w-100"><i class="bi bi-cart4"></i>Beli</a>
-                        </div>
-                      </div>
-                    </div>
-                    <div clas="col-md-3 mb-4">
-                      <div class="card">
-                        <img src="images/produk/product_espresso.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Luwak Kopi</h5>
-                          <div class="row my-4">
-                            <div class="col">
-                              Rp 150.000
-                            </div>
-                            <div class="col">
-                              100 Gram
-                            </div>
-                          </div>
-                          <a href="#" class="btn btn-primary w-100"><i class="bi bi-cart4"></i>Beli</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                    <div id="baris_produk" class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+
+                  
         
-                        </div>
+                   </div>
                    
                 </div>
-            </section>
+            </section>
 
         <footer class="bg-success py-4 mt-5">
           <div class="container">
@@ -170,6 +111,58 @@
             </div>
           </div>
         </footer>
+
+        <script src="js/jQuery-3.6.3.min.js"></script>
+
+        <script>
+
+          var api = "https://rikikurnia.com/prakerja/api/produk/"
+
+          select_kopi.onchange = function(){
+            var dipilih = this.value
+            var api_server = api + dipilih
+
+            var template = ""
+
+            $.get(api_server).then( function(respon) {
+                var data_kopi = respon.data
+                
+                data_kopi.forEach(item => {
+               template += ` <div clas="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="${item.foto}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">${item.nama}</h5>
+                          <div class="row my-4">
+                            <div class="col">
+                              ${item.harga}
+                            </div>
+                            <div class="col">
+                              ${item.size}
+                            </div>
+                          </div>
+                          <a href="${item.link}" class="btn btn-primary w-100"><i class="bi bi-cart4"></i>Beli</a>
+                        </div>
+                      </div>
+                    </div>`
+                  });
+                  document.querySelector("#baris_produk").innerHTML = template
+            })
+          
+          }
+         
+ 
+
+  
+
+ 
+
+        </script>
+
+</body>
+
+
+</html>
     
          
 

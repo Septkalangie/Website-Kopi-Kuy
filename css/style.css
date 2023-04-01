@@ -5,11 +5,11 @@
 
 * {
    box-sizing: border-box;
-   margin: 0;
-   padding: 0;
+   margin: 10;
+   padding: 20;
 }
 
-}
+
 html {
    scroll-behavior: smooth;
 }
@@ -19,28 +19,15 @@ body {
 }
 
 .bg-kopi {
-   background-color: rgb(13, 36, 13);
+   background-color: rgb(4, 94, 55);
 }
-
-<style>
-
-@media {max: width 700px; }
-
-.navigasi {display: none;}
-
-.logo {margin-right: auto;}
-
-header.kiri {width: 100%;}
-header.kanan {width: 100;}
-section {padding-left: 10px;
-padding-right: 10px ;}
 
 .best-seller .produk {
    width: 50%;
    margin-bottom: 30px;
 }
 .section {
-   padding-p:to 80px;
+   padding-top: 80px;
    padding-bottom: 80px;
    margin-top: 40px;
    margin-bottom: 40px;
@@ -80,6 +67,7 @@ nav {
    background-color: rgb(9, 3, 31);
    padding-left: 30px;
    padding-right: 30px;
+   
 }
 
 nav .chat {
@@ -93,6 +81,7 @@ nav .chat {
 }
 
 nav .baris {
+   display:flex;
    align-items: center;
    height: 50px;
 }
@@ -148,6 +137,7 @@ header .kanan {
 
 header .kiri h1 {
    margin-bottom: 25px;
+   font-size: 50px;
 }
 
 header .kiri p.tagline {
@@ -157,7 +147,7 @@ header .kiri p.tagline {
 
 header .kiri .cta p {
    font-size: 16px;
-   margin-bottom: 20px;
+   padding-top: 20px;
 }
 
 header .kiri .cta a {
@@ -166,6 +156,7 @@ header .kiri .cta a {
 
 header .kiri .cta img {
    height: 50px;
+   margin-right: 20px;
 }
 
 /* Best Seller */
@@ -216,6 +207,7 @@ section.about-us {
 /* Our Team */
 
 .our-team {
+   padding-top: 30px;
    background-color: rgb(232, 219, 190);
 }
 
@@ -235,10 +227,14 @@ section.about-us {
 /* Review */
 
 .review {
+   padding-top: 30px;
    background-image: url(../images/shapes/9.svg);
    background-size: cover;
 }
 
+.review .sub {
+   padding-top: 40px;
+}
 .review .baris {
    width: 1366px;
    max-width: 100%;
